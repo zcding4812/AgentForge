@@ -1,6 +1,6 @@
 # AgentForge
 
-通用 AI Agent 平台，基于 **LangChain** 与 **LangGraph** 构建，采用 **Harness 编程模式**——内核零框架依赖，通过端口协议与可插拔适配器解耦 LLM、工具与存储。内置四种执行策略，支持多 Agent 串行/并行编排、知识库 RAG 检索、MCP 工具动态加载与全链路可审计追踪。
+基于 **LangChain** 与 **LangGraph** 的全栈 AI Agent 平台，以 **Harness 编程模式** 展示如何设计通用 Agent 系统。适合学习 Agent 架构设计与多 Agent 编排。
 
 ---
 
