@@ -1,0 +1,61 @@
+:root {
+  --color-primary: #2563eb;
+  /* 系统监控：Token 按角色堆叠柱颜色 */
+  --color-token-chart-user: #0d9488;
+  --color-token-chart-assistant: var(--color-primary);
+  --color-page-bg: #f4f6f9;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text-main: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-user-msg: #eff6ff;
+  --color-kb-ref: #f3e8ff;
+  --color-tool-bg: #ecfeff;
+  --motion-base: 180ms ease;
+  --radius-card: 12px;
+  --radius-input: 10px;
+
+  /* Backward-compatible aliases for existing styles */
+  --color-bg-page: var(--color-page-bg);
+  --color-bg-card: var(--color-card);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  color: var(--color-text-main);
+  background: var(--color-page-bg);
+}
+
+#root {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ant-card {
+  border-color: var(--color-border) !important;
+  border-radius: var(--radius-card) !important;
+}
+
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-select-selector {
+  border-radius: var(--radius-input) !important;
+}
+
+.ant-menu-light .ant-menu-item-selected {
+  color: var(--color-primary) !important;
+  background: var(--color-user-msg) !important;
+}

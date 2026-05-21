@@ -1,0 +1,199 @@
+/* Agent 列表统一运维风格 — 模型提供商 / 模型列表 / Agent 列表复用 */
+
+.list-ops-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 100%;
+  background: #f5f7fa;
+  margin: -20px;
+  padding: 20px;
+  transition: background 200ms ease;
+}
+
+.list-ops-toolbar.ant-card {
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.list-ops-toolbar .ant-card-body {
+  padding: 24px !important;
+}
+
+.list-ops-toolbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.list-ops-toolbar-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.list-ops-search.ant-input-search {
+  width: min(400px, 100%);
+  flex: 1 1 280px;
+  max-width: 400px;
+}
+
+.list-ops-search .ant-input-affix-wrapper,
+.list-ops-search .ant-input-group .ant-input {
+  min-height: 48px !important;
+  border-radius: 8px !important;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.list-ops-search .ant-input-search-button {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 0 8px 8px 0 !important;
+  background: #1677ff !important;
+  border-color: #1677ff !important;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.list-ops-search .ant-input-search-button:hover {
+  background: #0958d9 !important;
+  border-color: #0958d9 !important;
+}
+
+.list-ops-btn-primary.ant-btn-primary {
+  height: 48px !important;
+  padding: 0 20px !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  border-radius: 8px !important;
+  background: #1677ff !important;
+  border-color: #1677ff !important;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.list-ops-btn-primary.ant-btn-primary:hover {
+  background: #0958d9 !important;
+  border-color: #0958d9 !important;
+}
+
+.list-ops-select.ant-select .ant-select-selector {
+  min-height: 48px !important;
+  border-radius: 8px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.list-ops-segmented.ant-segmented {
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.list-ops-segmented .ant-segmented-item {
+  border-radius: 6px;
+  transition: color 200ms ease, background 200ms ease;
+}
+
+.list-ops-segmented .ant-segmented-item-selected {
+  background: #1677ff !important;
+  color: #fff !important;
+}
+
+.list-ops-table-card.ant-card {
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.list-ops-table-card .ant-card-body {
+  padding: 24px !important;
+}
+
+.list-ops-table .ant-table-thead > tr > th {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  padding: 16px 16px !important;
+  background: #fff !important;
+}
+
+.list-ops-table .ant-table-tbody > tr > td {
+  font-size: 16px;
+  line-height: 24px;
+  padding: 16px !important;
+  transition: background 200ms ease;
+}
+
+.list-ops-table .ant-table-tbody > tr {
+  height: 64px;
+}
+
+.list-ops-table .ant-table-tbody > tr:hover > td {
+  background: #f5f7fa !important;
+}
+
+.list-ops-table .ant-pagination {
+  margin: 16px 0 0 !important;
+}
+
+.list-ops-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.list-ops-tag--on {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.list-ops-tag--off {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.list-ops-tag--err {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.list-ops-link.ant-btn-link {
+  padding: 0 6px !important;
+  height: auto !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: #1677ff !important;
+  transition: color 200ms ease, opacity 200ms ease;
+}
+
+.list-ops-link.ant-btn-link:hover {
+  color: #0958d9 !important;
+  text-decoration: underline !important;
+}
+
+.list-ops-empty .ant-empty-description {
+  font-size: 14px;
+  line-height: 20px;
+  color: #6b7280;
+}
+
+/* 系统设置内 Tab：与列表区背景一致 */
+.settings-provider-tabs.ant-tabs {
+  background: #f5f7fa;
+}
+
+.settings-provider-tabs .ant-tabs-nav {
+  margin-bottom: 16px;
+}
+
+.settings-provider-tabs .ant-tabs-content-holder {
+  min-height: 200px;
+}

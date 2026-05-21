@@ -1,0 +1,317 @@
+/* 与链路追踪 / 全局运维页一致的信息层级与卡片规范 */
+
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 自定义 Tab：顶栏下方、统计区上方 — 对齐设计文档 */
+.settings-tabs-trace {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  padding: 0 4px 12px;
+  margin: 0;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 0;
+  transition: border-color var(--motion-base, 180ms ease);
+}
+
+.settings-tabs-trace__item {
+  position: relative;
+  padding: 0 0 10px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #86909c;
+  cursor: pointer;
+  transition: color var(--motion-base, 180ms ease);
+}
+
+.settings-tabs-trace__item:hover {
+  color: #1677ff;
+}
+
+.settings-tabs-trace__item--active {
+  color: #1677ff;
+}
+
+.settings-tabs-trace__item--active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #1677ff;
+  border-radius: 1px;
+}
+
+.settings-logs-placeholder.ant-card {
+  border-radius: 8px;
+}
+
+/* 顶栏：返回 + 标题 + 操作（对齐链路追踪运维页） */
+.models-config-hero-card.ant-card {
+  border-radius: 8px;
+  transition: box-shadow var(--motion-base, 180ms ease);
+}
+
+.models-config-hero-card:hover {
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+.models-config-hero-card .ant-card-body {
+  padding: 16px;
+}
+
+.models-config-hero-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.models-config-hero-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.models-config-back-btn.ant-btn {
+  padding: 4px 8px;
+  height: auto;
+  color: var(--color-text-secondary);
+  transition: background var(--motion-base, 180ms ease), color var(--motion-base, 180ms ease);
+}
+
+.models-config-back-btn.ant-btn:hover {
+  color: #1677ff;
+  background: #f5f7fa;
+}
+
+.models-config-hero-titles {
+  min-width: 0;
+}
+
+.models-config-hero-title {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #1d2129;
+}
+
+.models-config-hero-sub {
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #86909c;
+}
+
+.models-config-hero-actions.ant-space .ant-btn {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 4px;
+  transition: background var(--motion-base, 180ms ease), border-color var(--motion-base, 180ms ease),
+    opacity var(--motion-base, 180ms ease);
+}
+
+.models-config-btn-secondary.ant-btn-default {
+  background: #fff;
+  border-color: #e5e7eb;
+  color: #1d2129;
+}
+
+.models-config-btn-secondary.ant-btn-default:hover {
+  background: #f5f7fa !important;
+  border-color: #e5e7eb !important;
+  color: #1d2129 !important;
+}
+
+.models-config-btn-primary.ant-btn-primary {
+  background: #1677ff;
+  border-color: #1677ff;
+}
+
+.models-config-btn-primary.ant-btn-primary:hover {
+  background: #0958d9 !important;
+  border-color: #0958d9 !important;
+}
+
+/* 统计卡：复用 trace-stat-card，补充语义色与 hover */
+.models-stat-row {
+  margin-bottom: 0;
+}
+
+.models-stat-card.trace-stat-card {
+  transition: box-shadow var(--motion-base, 180ms ease);
+}
+
+.models-stat-card.trace-stat-card:hover {
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+.models-stat-value--success {
+  color: #10b981;
+}
+
+.models-stat-value--danger {
+  color: #dc2626;
+}
+
+/* 筛选区：白卡片，与 toolbar-card / 链路追踪统计条一致 */
+.models-config-filters-card.ant-card {
+  border-radius: 8px;
+}
+
+.models-config-filters-card .ant-card-body {
+  padding: 16px;
+}
+
+.models-config-filters-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.models-config-search.ant-input-search {
+  width: 280px;
+  max-width: 100%;
+}
+
+.models-config-search .ant-input-affix-wrapper,
+.models-config-search .ant-input-group .ant-input {
+  min-height: 36px;
+  border-radius: 4px;
+}
+
+.models-config-search .ant-input-search-button {
+  border-radius: 0 4px 4px 0;
+  background: #1677ff;
+  border-color: #1677ff;
+}
+
+.models-config-search .ant-input-search-button:hover {
+  background: #0958d9 !important;
+  border-color: #0958d9 !important;
+}
+
+.models-config-filters-inner .ant-input-affix-wrapper,
+.models-config-filters-inner .ant-select-selector {
+  min-height: 36px;
+}
+
+.models-config-filters-inner .ant-segmented {
+  border-radius: 4px;
+}
+
+.models-config-filters-inner .ant-segmented-item-selected {
+  background: #1677ff !important;
+  color: #fff !important;
+}
+
+.models-config-filters-inner .ant-segmented-item:hover:not(.ant-segmented-item-selected) {
+  color: #1677ff;
+}
+
+/* 表格区：与链路追踪「运行列表」卡片一致 */
+.models-config-table-card.ant-card {
+  border-radius: 8px;
+}
+
+.models-config-table-card .ant-card-head {
+  min-height: 48px;
+  padding: 0 16px;
+}
+
+.models-config-table-card .ant-card-body {
+  padding: 16px;
+}
+
+.models-config-table-card .ant-table-tbody > tr > td {
+  padding: 12px 16px;
+}
+
+.models-config-table-card .ant-table-thead > tr > th {
+  padding: 12px 16px;
+}
+
+.models-config-table-card .ant-table-tbody > tr > td {
+  transition: background var(--motion-base, 180ms ease);
+}
+
+.models-config-table-card .ant-table-tbody > tr:hover > td {
+  background: #f5f7fa !important;
+}
+
+/* 状态语义色（文档指定） */
+.models-status-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.models-status-tag--on {
+  background: #ecfdf3;
+  color: #065f46;
+}
+
+.models-status-tag--off {
+  background: #f2f3f5;
+  color: #86909c;
+}
+
+.models-status-tag--err {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.models-health {
+  font-size: 13px;
+}
+
+.models-health--ok {
+  color: #10b981;
+}
+
+.models-health--bad {
+  color: #ef4444;
+}
+
+.models-health--pending {
+  color: var(--color-text-secondary);
+}
+
+/* 操作列：图标按钮，与链路追踪 Eye 按钮一致 */
+.models-config-op-btn.ant-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 4px;
+}
+
+.models-config-op-btn.ant-btn:hover {
+  background: var(--color-page-bg);
+}
+
+/* 表格行：健康异常左侧强调（与设计文档一致） */
+.models-config-row--error td:first-child {
+  box-shadow: inset 3px 0 0 #ef4444;
+}
+
+/* 空状态：与 Ant Design Empty 默认 + 主按钮 */
+.models-config-empty .ant-empty-description {
+  color: var(--color-text-secondary);
+}

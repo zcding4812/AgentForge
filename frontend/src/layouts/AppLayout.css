@@ -1,0 +1,141 @@
+.app-shell {
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--color-page-bg);
+  /* 与 Sider width / collapsedWidth 一致，供知识库详情等 fixed 底栏计算水平范围 */
+  --app-sider-width: 220px;
+}
+
+.app-shell:has(> .ant-layout-sider.ant-layout-sider-collapsed) {
+  --app-sider-width: 64px;
+}
+
+/* 右侧主栏：与侧栏并排时占满视口高度，内部再 flex 分配 Header / Content，避免子页把整页撑出滚动条 */
+.app-shell > .ant-layout {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  max-height: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-sider {
+  background: var(--color-card) !important;
+  border-right: 1px solid var(--color-border);
+  transition: all var(--motion-base);
+  height: 100%;
+  max-height: 100%;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.app-sider .ant-layout-sider-children {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sider-nav {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sider-brand {
+  height: 56px;
+  padding: 0 10px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-text-main);
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+}
+
+.sider-brand-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-header {
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 56px;
+  line-height: normal;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header-left {
+  min-width: 0;
+}
+
+.header-title.ant-typography {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.header-subtitle {
+  display: block;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--color-text-secondary);
+}
+
+/* 顶栏「首页」→ /studio：标签形可点击入口 */
+.app-header-home-tag.ant-tag {
+  margin-inline-end: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  user-select: none;
+  padding: 3px 11px;
+  font-size: 13px;
+  line-height: 1.35;
+  border-radius: var(--radius-input);
+  transition: opacity var(--motion-base), filter var(--motion-base);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.app-header-home-tag__icon {
+  font-size: 14px;
+}
+
+.app-header-home-tag.ant-tag:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.app-header-home-tag.ant-tag:hover {
+  opacity: 0.92;
+  filter: brightness(0.97);
+}
+
+.app-content {
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--color-page-bg);
+}
+
+/* 路由出口单根节点铺满主内容区，避免内容把视口撑出全局滚动条 */
+.app-content > * {
+  flex: 1 1 0%;
+  min-height: 0;
+  min-width: 0;
+}

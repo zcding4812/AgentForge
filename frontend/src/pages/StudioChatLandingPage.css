@@ -1,0 +1,408 @@
+/* 工作室对话落地页：与控制台 AppLayout 共用 :root token（--color-page-bg / --color-primary 等） */
+.studio-chat-landing {
+  /* 局部别名，便于与控制台语义一致 */
+  --studio-bg: var(--color-page-bg);
+  --studio-panel: var(--color-card);
+  --studio-panel-hover: #f8fafc;
+  --studio-accent: var(--color-primary);
+  --studio-accent-soft: var(--color-user-msg);
+  --studio-text: var(--color-text-main);
+  --studio-muted: var(--color-text-secondary);
+  --studio-border: var(--color-border);
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--studio-bg);
+  color: var(--studio-text);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.studio-chat-landing *,
+.studio-chat-landing *::before,
+.studio-chat-landing *::after {
+  box-sizing: border-box;
+}
+
+.studio-chat-landing__float {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  max-width: min(420px, calc(100vw - 2rem));
+}
+
+.studio-chat-landing__float .ant-btn {
+  border-radius: 999px;
+  height: 40px;
+  padding-inline: 16px;
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.studio-chat-landing__float .ant-btn-default {
+  border-color: var(--color-border);
+  background: var(--color-card);
+  color: var(--color-text-main);
+}
+
+.studio-chat-landing__float .ant-btn-default:hover {
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+.studio-chat-landing__main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 4.5rem 1.25rem 1.5rem;
+}
+
+.studio-chat-landing--has-thread .studio-chat-landing__main {
+  max-width: 960px;
+  padding-top: 3.5rem;
+  min-height: 0;
+}
+
+.studio-chat-landing__hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  padding-bottom: 10vh;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.studio-chat-landing--has-thread .studio-chat-landing__hero {
+  display: none;
+}
+
+.studio-chat-landing__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.studio-chat-landing__brand-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-card);
+  background: linear-gradient(145deg, var(--color-primary), #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+}
+
+.studio-chat-landing__brand-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text-main);
+}
+
+.studio-chat-landing__brand-sub {
+  font-size: 0.875rem;
+  color: var(--studio-muted);
+}
+
+/* 命名空间：下拉按钮，强调可点击切换 */
+.studio-chat-landing__workspace-dropdown-trigger.ant-btn {
+  height: auto;
+  min-height: 36px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--color-primary);
+  background: var(--color-user-msg);
+  color: var(--color-text-main);
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.15);
+}
+
+.studio-chat-landing__workspace-dropdown-trigger.ant-btn:not(:disabled):hover {
+  border-color: #1d4ed8 !important;
+  color: var(--color-primary) !important;
+  background: #fff !important;
+}
+
+.studio-chat-landing__workspace-dropdown-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(360px, 72vw);
+}
+
+.studio-chat-landing__workspace-dropdown-value {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.studio-chat-landing__workspace-dropdown-caret {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--color-primary);
+}
+
+.studio-chat-landing__workspace-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 168px;
+}
+
+.studio-chat-landing__workspace-menu-item-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.studio-chat-landing__workspace-menu-check {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 12px;
+}
+
+/* 大输入框 */
+.studio-chat-landing__composer-shell {
+  width: 100%;
+  max-width: 720px;
+  background: var(--studio-panel);
+  border: 1px solid var(--studio-border);
+  border-radius: 28px;
+  padding: 1rem 1.1rem 0.85rem;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+}
+
+.studio-chat-landing__composer-shell .ant-input {
+  background: transparent !important;
+  color: var(--studio-text) !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px 2px 8px;
+  font-size: 1rem;
+  line-height: 1.55;
+  resize: none !important;
+}
+
+.studio-chat-landing__composer-shell .ant-input::placeholder {
+  color: var(--studio-muted) !important;
+}
+
+.studio-chat-landing__composer-shell .ant-input:focus,
+.studio-chat-landing__composer-shell .ant-input-focused {
+  box-shadow: none !important;
+}
+
+.studio-chat-landing__composer-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--studio-border);
+}
+
+.studio-chat-landing__composer-foot-left {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 0 1 auto;
+  max-width: calc(100% - 3.25rem);
+}
+
+.studio-chat-landing__send-btn.ant-btn {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* 对话阶段 */
+.studio-chat-landing__thread {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 0.75rem;
+}
+
+.studio-chat-landing--has-thread .studio-chat-landing__thread {
+  display: flex;
+}
+
+.studio-chat-landing__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 0.25rem 0 0.5rem;
+  scroll-behavior: smooth;
+}
+
+.studio-chat-landing__dock-wrap {
+  flex-shrink: 0;
+  padding-top: 0.25rem;
+  background: linear-gradient(to top, var(--studio-bg) 72%, transparent);
+}
+
+.studio-chat-landing__dock-wrap .studio-chat-landing__composer-shell {
+  max-width: none;
+  border-radius: 22px;
+}
+
+/* 消息气泡（与对话区浅色一致） */
+.studio-chat-landing__msg-row {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.studio-chat-landing__msg-row--user {
+  justify-content: flex-end;
+}
+
+.studio-chat-landing__msg-row--assistant {
+  justify-content: flex-start;
+}
+
+.studio-chat-landing__bubble {
+  max-width: min(640px, 92%);
+  border-radius: var(--radius-card);
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  border: 1px solid var(--studio-border);
+}
+
+.studio-chat-landing__bubble--user {
+  background: var(--studio-accent-soft);
+  border-color: rgba(37, 99, 235, 0.2);
+  color: var(--studio-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.studio-chat-landing__bubble--assistant {
+  background: var(--studio-panel);
+  color: var(--studio-text);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+/* Markdown：沿用 pages.css 结构，在浅色下微调链与代码块 */
+.studio-chat-landing .agent-workspace-msg__md {
+  color: var(--studio-text);
+}
+
+.studio-chat-landing .agent-workspace-msg__md a {
+  color: var(--color-primary);
+}
+
+.studio-chat-landing .agent-workspace-msg__md code {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.studio-chat-landing .agent-workspace-msg__md pre {
+  background: #f8fafc;
+  border: 1px solid var(--studio-border);
+}
+
+.studio-chat-landing .agent-workspace-msg__thinking {
+  margin-bottom: 0.65rem;
+}
+
+.studio-chat-landing .agent-workspace-msg__thinking-label {
+  color: var(--studio-muted) !important;
+}
+
+.studio-chat-landing .agent-workspace-msg__thinking-pre {
+  color: var(--studio-muted);
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid var(--studio-border);
+}
+
+.studio-chat-landing__wait {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--studio-muted);
+  font-size: 0.875rem;
+}
+
+/* 编排进度：贴在对话滚动区顶部（sticky），不占用输入框区域 */
+.studio-chat-landing__exploring-float {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  background: var(--color-card);
+  border: 1px solid var(--studio-border);
+  border-left: 3px solid var(--studio-accent);
+  border-radius: var(--radius-card);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+  max-height: min(180px, 30vh);
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+.studio-chat-landing__exploring-float-phase {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.studio-chat-landing__exploring-float-phase--muted {
+  font-weight: 400;
+  color: var(--studio-muted);
+}
+
+.studio-chat-landing__exploring-float-body {
+  font-size: 0.75rem;
+  color: var(--studio-muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.studio-chat-landing__config-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  backdrop-filter: blur(2px);
+}

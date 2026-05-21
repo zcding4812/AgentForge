@@ -1,0 +1,126 @@
+.pixel-agents-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  background: #0f0f12;
+}
+
+.pixel-agents-shell__bar {
+  flex: none;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #181828;
+}
+
+.pixel-agents-shell__bar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.pixel-agents-shell__main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.pixel-agents-shell__iframe {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: #000;
+}
+
+.pixel-agents-shell__panel {
+  flex: none;
+  width: 560px;
+  min-width: 400px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--color-page-bg);
+  color: var(--color-text-main);
+  border-left: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* 侧栏顶：仅成员选择 */
+.pixel-agents-shell__panel-toolbar {
+  flex: none;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-card, #fff);
+}
+
+.pixel-agents-shell__member-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.pixel-agents-shell__member-toolbar-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* 嵌套 `pages.css` 的工作台聊天结构：侧栏 + 对话卡纵向铺满 */
+.agent-workspace-page.pixel-agents-shell__workspace {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  padding: 12px 12px 14px;
+  overflow: hidden;
+}
+
+/* 与 pages.css 中 .agent-workspace-page .chat-panel 的 flex:1 一起占满 */
+.pixel-agents-shell__workspace .agent-workspace-chat-panel.ant-card {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius-card, 8px);
+}
+
+/* 浅色侧栏内 Ant 组件可读性 */
+.pixel-agents-shell__panel .ant-typography {
+  color: inherit;
+}
+
+.pixel-agents-shell__panel .ant-typography-secondary {
+  color: var(--color-text-secondary) !important;
+}
+
+.pixel-agents-shell__panel .ant-empty-description {
+  color: var(--color-text-secondary);
+}
+
+.pixel-agents-shell__member-toolbar .pixel-agents-shell__agent-select {
+  width: 100% !important;
+}
+
+.pixel-agents-shell__chat-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0 4px;
+}
+
+/* 与工作室 `.messages` 同列的本地补充：非气泡系统行 */
+.pixel-agents-shell__msg-system {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  padding: 4px 0 8px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  border-bottom: 1px dashed var(--color-border);
+}

@@ -1,0 +1,38 @@
+# ============================================================
+# 白名单模式：默认忽略一切，只放行前端与后端
+# 子目录 backend/.gitignore、frontend/.gitignore 处理内部排除
+# ============================================================
+
+# 忽略根目录下所有文件和目录
+/*
+
+# ---------- 放行根文件 ----------
+!.gitignore
+!README.md
+!LICENSE
+!docker-compose.dev.yml
+
+# ---------- 放行前端与后端 ----------
+!backend/
+!frontend/
+
+# ---------- 跨项目排除（递归生效） ----------
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+node_modules/
+dist/
+dist-ssr/
+logs/
+*.log
+.DS_Store
+Thumbs.db
+AGENTS.md
+.cluade

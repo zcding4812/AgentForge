@@ -1,0 +1,85 @@
+[project]
+name = "agent-forge-backend"
+version = "0.1.0"
+description = "Backend service for AI Agents platform."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi[standard]",
+    "pydantic-settings",
+    "sqlalchemy",
+    "pymysql",
+    "alembic",
+    "httpx",
+    "langchain-core>=1.2.25",
+    "langchain-openai>=1.1.12",
+    "langgraph>=1.1.4",
+    "langchain>=1.2.14",
+    "tenacity>=9.1.4",
+    "pytest>=9.0.2",
+    "aiomysql>=0.3.2",
+    "redis>=5.0.0",
+    "tiktoken>=0.12.0",
+    "aiosqlite>=0.22.1",
+    "aioboto3>=15.5.0",
+    "motor>=3.7.1",
+    "pymilvus>=2.4.4",
+    "llama-index-core>=0.12.0",
+    "llama-index-readers-file>=0.6.0",
+    "beautifulsoup4>=4.14.3",
+    "lxml>=6.0.4",
+    "docx2txt>=0.9",
+    "openpyxl>=3.1.5",
+    "ebooklib>=0.20",
+    "html2text>=2025.4.15",
+    "nbconvert>=7.17.1",
+    "xlrd>=2.0.2",
+    "tree-sitter-language-pack>=1.6.0",
+    "llama-index-vector-stores-milvus>=1.1.0",
+    "llama-index-embeddings-openai>=0.3.0",
+    "llama-index-embeddings-ollama>=0.5.0",
+    "langchain-mcp-adapters>=0.1.0",
+    # mcp SDK 在 Windows 导入 stdio 时需要 pywintypes（pywin32）；Linux CI 不安装。
+    "pywin32>=306; sys_platform == 'win32'",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+]
+
+[tool.fastapi]
+entrypoint = "app.main:app"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["agent", "app", "tests"]
+
+[tool.ruff.format]
+docstring-code-format = false
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+# 按「Sink → Context → Engine → 子 Span → 装饰器」分层分组，避免 isort 合并为单一字母序块。
+"app/core/tracing/__init__.py" = ["I001"]
+# 与 tracing 相同：显式分组 re-export，避免 isort 拆成多行单符号 import。
+"app/agent/kernel/__init__.py" = ["I001"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app", "agent"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+# Pylance / Pyright：从本目录的 .venv 解析依赖（避免 “Import could not be resolved”）
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.11"

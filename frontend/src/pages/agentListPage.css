@@ -1,0 +1,437 @@
+/* AI Agent 管理中心 — 最终优化版（顶栏通栏 + 列表顶格） */
+
+.agent-list-page {
+  /* 随 app-content flex 链铺满主内容区到底部 */
+  flex: 1;
+  min-height: 0;
+  align-self: stretch;
+  /* app-content 左右各 20px padding，子元素 100% 只有内容区宽；拉满与 main 同宽 */
+  width: calc(100% + 40px);
+  max-width: calc(100% + 40px);
+  margin: -20px;
+  background: #f7f8fa;
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== 工具条 + 表格（同一白底卡片） ========== */
+.agent-list-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+}
+
+/* 左侧：新建；右侧：搜索 */
+.agent-list-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+/* 右侧：搜索等（与左侧并列时顶到工具栏右端） */
+.agent-list-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.agent-list-toolbar-right .agent-list-search-wrap {
+  margin-left: 0;
+}
+
+@media (max-width: 576px) {
+  .agent-list-toolbar-right {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+
+  .agent-list-toolbar-right .agent-list-search-wrap {
+    width: 100%;
+  }
+}
+
+/* 「Agent 类型」列：列名 + 图标触发筛选 */
+.agent-list-type-col-header {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.agent-list-type-col-label-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.agent-list-type-filter-icon {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: #8c8c8c;
+}
+
+.agent-list-type-filter-icon--active {
+  color: #1677ff;
+}
+
+.agent-list-type-col-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d2129;
+  line-height: 1.2;
+}
+
+.agent-list-type-icon-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 2px 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+  line-height: 1;
+  color: inherit;
+}
+
+.agent-list-type-icon-trigger:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.agent-list-type-icon-trigger:focus-visible {
+  outline: 2px solid rgba(22, 119, 255, 0.35);
+  outline-offset: 1px;
+}
+
+.agent-list-type-popover {
+  min-width: 200px;
+  padding: 4px 0 0;
+}
+
+.agent-list-type-checkbox-group {
+  display: flex !important;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.agent-list-type-clear.ant-btn {
+  padding-left: 0;
+  height: auto;
+  margin-top: 4px;
+}
+
+.agent-list-search-wrap {
+  flex: 0 0 auto;
+  width: 240px;
+  max-width: 100%;
+  margin-left: auto;
+}
+
+.agent-list-search-input.ant-input-affix-wrapper {
+  width: 100%;
+  padding: 6px 10px 6px 32px !important;
+  min-height: 36px;
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+  font-size: 14px !important;
+  background: #fff !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agent-list-search-input.ant-input-affix-wrapper:hover {
+  border-color: #1677ff !important;
+}
+
+.agent-list-search-input.ant-input-affix-wrapper-focused,
+.agent-list-search-input.ant-input-affix-wrapper:focus-within {
+  border-color: #1677ff !important;
+  box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.1) !important;
+}
+
+.agent-list-search-icon {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.agent-list-row-action.ant-btn {
+  color: #1677ff !important;
+  font-size: 16px !important;
+}
+
+.agent-list-row-action.ant-btn:hover {
+  color: #4096ff !important;
+  background: rgba(22, 119, 255, 0.06) !important;
+}
+
+.agent-list-row-action.ant-btn-danger {
+  color: #ff4d4f !important;
+}
+
+.agent-list-row-action.ant-btn-danger:hover {
+  color: #ff7875 !important;
+  background: rgba(255, 77, 79, 0.08) !important;
+}
+
+.agent-list-actions-cell.ant-space {
+  justify-content: center;
+}
+
+.agent-list-action-primary.ant-btn-primary {
+  padding: 6px 14px !important;
+  height: auto !important;
+  min-height: 36px;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  background: #1677ff !important;
+  border-color: #1677ff !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+}
+
+.agent-list-action-primary.ant-btn-primary:hover {
+  background: #4096ff !important;
+  border-color: #4096ff !important;
+}
+
+@media (max-width: 576px) {
+  .agent-list-toolbar .agent-list-search-wrap {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* ========== 列表容器 ========== */
+.agent-list-table-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* 表格在上区滚动；分页独立在 wrap 底部，不在 ant-table-wrapper 内部 */
+.agent-list-table-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.agent-list-table-inner {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.agent-list-table-shell .agent-list-table .ant-table-container {
+  border-top: none;
+}
+
+/* 固定列 + scroll 产生的测量行，去掉后不再生成；兜底隐藏避免占位 */
+.agent-list-table .ant-table-measure-row {
+  display: none !important;
+}
+
+/* 紧凑行高；首行紧贴表头（滚动区顶部无多余留白） */
+.agent-list-table .ant-table-body {
+  padding-top: 0 !important;
+}
+
+.agent-list-table .ant-table-thead > tr > th {
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #1d2129 !important;
+  background: #fafafa !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.agent-list-table .ant-table-thead > tr > th:has(.agent-list-type-col-header) {
+  vertical-align: top;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.agent-list-table .ant-table-tbody > tr > td {
+  padding: 6px 12px !important;
+  font-size: 14px !important;
+  color: #4e5969 !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  transition: background 0.2s ease;
+}
+
+.agent-list-table .ant-table-tbody > tr:hover > td {
+  background: #f7f8fa !important;
+}
+
+.agent-list-pagination-bar {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 12px;
+  border-top: 1px solid #f0f0f0;
+  background: #fff;
+}
+
+.agent-list-pagination-bar .ant-pagination {
+  margin: 0 !important;
+  font-size: 12px;
+}
+
+.agent-list-pagination-bar .ant-pagination .ant-pagination-total-text,
+.agent-list-pagination-bar .ant-pagination .ant-pagination-item,
+.agent-list-pagination-bar .ant-pagination .ant-pagination-prev,
+.agent-list-pagination-bar .ant-pagination .ant-pagination-next {
+  min-width: 26px;
+  height: 26px;
+  line-height: 24px;
+  font-size: 12px;
+}
+
+.agent-list-btn-primary.ant-btn-primary {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  background: #1677ff !important;
+  border-color: #1677ff !important;
+}
+
+.agent-list-btn-primary.ant-btn-primary:hover {
+  background: #4096ff !important;
+  border-color: #4096ff !important;
+}
+
+/* 模型/提供商列表：列标题 + 其后筛选 */
+.provider-col-header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  min-width: 0;
+}
+
+.provider-col-header--inline {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.provider-col-header-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d2129;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.provider-col-filter-select.ant-select .ant-select-selector {
+  min-height: 28px !important;
+  font-size: 12px !important;
+  border-radius: 6px !important;
+}
+
+.agent-list-table .ant-table-thead > tr > th:has(.provider-col-header) {
+  vertical-align: top;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+/* Agent 工作区：与模型列表（ModelListPanel）同页宽、同白底壳与内边距；纵向滚动仅在左侧配置列内部 */
+.agent-list-table-shell > .agent-workspace {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* 设置页抽屉：提供商 / 模型表单分区（Collapse ghost） */
+.settings-form-collapse.ant-collapse-ghost > .ant-collapse-item {
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.settings-form-collapse .ant-collapse-header {
+  padding: 10px 0 !important;
+  font-weight: 600;
+  color: var(--color-text-main, #0f172a);
+}
+
+.settings-form-collapse .ant-collapse-content-box {
+  padding: 0 0 4px !important;
+}
+
+.settings-provider-form .ant-form-item:last-child,
+.settings-model-form .ant-collapse-item:last-child .ant-form-item:last-child {
+  margin-bottom: 8px;
+}
+
+/* ========== 工具库页（与 Agent 列表同壳） ========== */
+.tools-page-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.tools-page-toolbar-right .tools-page-search.agent-list-search-wrap {
+  width: 240px;
+  max-width: 100%;
+  margin-left: 0;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 576px) {
+  .tools-page-toolbar-right {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+
+  .tools-page-toolbar-right .tools-page-search.agent-list-search-wrap {
+    width: 100%;
+  }
+}
+
+.agent-tool-name-chip {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  padding: 2px 8px;
+  background: #f7f8fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  color: #1d2129;
+}
+
+/* 新建 Agent：命名空间 Select 与表单项同宽 */
+.agent-list-create-ns-select {
+  width: 100%;
+}

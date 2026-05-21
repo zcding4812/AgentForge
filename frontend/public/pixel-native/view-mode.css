@@ -1,0 +1,29 @@
+/**
+ * 嵌入 ai-agents 像素工作台：隐藏编辑工具条、顶栏保存/撤销、版本与更新提示。
+ * 缩放控件保留可见。勿覆盖 html/body/#root 尺寸，避免画布布局异常。
+ */
+
+/* 顶中 Undo / Redo / Save（left-1/2 在 CSS 中需转义斜杠） */
+div.absolute.top-8.left-1\/2.-translate-x-1\/2.z-10.flex.gap-4.items-center.pixel-panel.p-4 {
+  display: none !important;
+}
+
+/* 左下家具模式：Furniture / Floor / Wall / Erase */
+div.absolute.bottom-76.left-10.z-10.pixel-panel {
+  display: none !important;
+}
+
+/* 左下：+ Agent / Layout / Settings */
+div.absolute.bottom-10.left-10.z-20.flex.items-center.gap-4.pixel-panel.p-4 {
+  display: none !important;
+}
+
+/* 右下版本号 v1.x */
+div.absolute.bottom-8.right-28.z-20.text-lg.cursor-pointer.select-none.pr-2.transition-opacity.duration-200 {
+  display: none !important;
+}
+
+/* 右下「Updated to v…」与「See what's new!」等更新浮层 */
+div.absolute.bottom-42.right-28.z-20.pixel-panel {
+  display: none !important;
+}
