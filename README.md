@@ -1,3 +1,5 @@
+
+
 # AgentForge
 
 基于 **LangChain** 与 **LangGraph** 的全栈 AI Agent 平台，以 **Harness 编程模式** 展示如何设计通用 Agent 系统。适合学习 Agent 架构设计与多 Agent 编排。
@@ -127,7 +129,7 @@ docker compose -f docker-compose.dev.yml up -d
 
 ### 方式二：本地开发
 
-**前置条件**：Python 3.11+ & [uv](https://docs.astral.sh/uv/)、Node.js 18+、MySQL、MongoDB
+**前置条件**：Python 3.11+ & [uv](https://docs.astral.sh/uv/)、Node.js 18+、MySQL、MongoDB、Redis、MinIO、Milvus
 
 ```bash
 # 后端
